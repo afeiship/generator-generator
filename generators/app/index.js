@@ -9,6 +9,10 @@ const yoHelper = require("@feizheng/yeoman-generator-helper");
 const replace = require("replace-in-file");
 
 module.exports = class extends Generator {
+  initializing() {
+    this.composeWith("dotfiles:stdapp");
+  }
+
   prompting() {
     // Have Yeoman greet the user.
     this.log(
