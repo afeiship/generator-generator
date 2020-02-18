@@ -1,35 +1,38 @@
-'use strict';
-const Generator = require('yeoman-generator');
-const chalk = require('chalk');
-const yosay = require('yosay');
-const glob = require('glob');
-const { resolve } = require('path');
-const remote = require('yeoman-remote');
-const yoHelper = require('@feizheng/yeoman-generator-helper');
-const replace = require('replace-in-file');
+"use strict";
+const Generator = require("yeoman-generator");
+const { resolve } = require("path");
+const chalk = require("chalk");
+const yosay = require("yosay");
+const glob = require("glob");
+const remote = require("yeoman-remote");
+const yoHelper = require("@feizheng/yeoman-generator-helper");
+const replace = require("replace-in-file");
 
 module.exports = class extends Generator {
   prompting() {
     // Have Yeoman greet the user.
     this.log(
       yosay(
-        `Welcome to the stunning ${chalk.red(
-          'generator-generator'
-        )} generator!`
+        `Welcome to the stunning ${chalk.red("generator-generator")} generator!`
       )
     );
 
     const prompts = [
       {
-        type: 'input',
-        name: 'project_name',
-        message: 'Your project_name?',
+        type: "input",
+        name: "project_name",
+        message: "Your project_name?",
         default: yoHelper.discoverRoot
       },
       {
-        type: 'input',
-        name: 'description',
-        message: 'Your description?'
+        type: "input",
+        name: "boilerplate_name",
+        message: "Your boilerplate_name?"
+      },
+      {
+        type: "input",
+        name: "description",
+        message: "Your description?"
       }
     ];
 
@@ -45,12 +48,12 @@ module.exports = class extends Generator {
   writing() {
     const done = this.async();
     remote(
-      'afeiship',
-      'boilerplate-generator',
+      "afeiship",
+      "boilerplate-generator",
       function(err, cachePath) {
-        // copy files:
+        // Copy files:
         this.fs.copy(
-          glob.sync(resolve(cachePath, '{**,.*}')),
+          glob.sync(resolve(cachePath, "{**,.*}")),
           this.destinationPath()
         );
         done();
@@ -59,17 +62,17 @@ module.exports = class extends Generator {
   }
 
   end() {
-    const { project_name, description, ProjectName } = this.props;
-    const files = glob.sync(resolve(this.destinationPath(), '{**,.*}'));
+    const { project_name, boilerplate_name, ProjectName } = this.props;
+    const files = glob.sync(resolve(this.destinationPath(), "{**,.*}"));
 
     replace.sync({
       files,
       from: [
-        /boilerplate-generator-description/g,
         /boilerplate-generator/g,
+        /boilerplate-name/g,
         /BoilerplateGenerator/g
       ],
-      to: [description, project_name, ProjectName]
+      to: [project_name, boilerplate_name, ProjectName]
     });
   }
 };
