@@ -61,6 +61,10 @@ module.exports = class extends Generator {
     );
   }
 
+  install() {
+    this.npmInstall();
+  }
+
   end() {
     const { project_name, boilerplate_name, ProjectName } = this.props;
     const files = glob.sync(resolve(this.destinationPath(), "{**,.*}"));
