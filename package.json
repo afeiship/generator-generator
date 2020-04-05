@@ -1,5 +1,5 @@
 {
-  "name": "generator-generator",
+  "name": "@feizheng/generator-generator",
   "version": "1.0.0",
   "description": "My yeoman generator.",
   "homepage": "https://github.com/afeiship/generator-generator",
