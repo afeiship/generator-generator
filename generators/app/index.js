@@ -24,6 +24,12 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: "input",
+        name: "scope",
+        message: "Your scope?",
+        default: 'feizheng'
+      },
+      {
+        type: "input",
         name: "project_name",
         message: "Your project_name?",
         default: yoHelper.discoverRoot
@@ -41,11 +47,11 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(prompts).then(
-      function(props) {
+      (props) => {
         // To access props later use this.props.someAnswer;
         this.props = props;
         yoHelper.rewriteProps(props);
-      }.bind(this)
+      }
     );
   }
 
@@ -54,14 +60,15 @@ module.exports = class extends Generator {
     remote(
       "afeiship",
       "boilerplate-generator",
-      function(err, cachePath) {
+      (err, cachePath) => {
         // Copy files:
-        this.fs.copy(
+        this.fs.copyTpl(
           glob.sync(resolve(cachePath, "{**,.*}")),
-          this.destinationPath()
+          this.destinationPath(),
+          this.props
         );
         done();
-      }.bind(this)
+      }
     );
   }
 
@@ -70,17 +77,20 @@ module.exports = class extends Generator {
   }
 
   end() {
-    const { project_name, boilerplate_name, ProjectName } = this.props;
-    const files = glob.sync(resolve(this.destinationPath(), "{**,.*}"));
+    const { scope, project_name, boilerplate_name, ProjectName } = this.props;
+    const files = glob.sync(
+      resolve(this.destinationPath(), "{**,.*}")
+    );
 
     replace.sync({
       files,
       from: [
+        /boilerplate-scope/,
         /boilerplate-generator/g,
         /boilerplate-name/g,
         /BoilerplateGenerator/g
       ],
-      to: [project_name, boilerplate_name, ProjectName]
+      to: [scope, project_name, boilerplate_name, ProjectName]
     });
   }
 };
