@@ -1,5 +1,5 @@
 {
-  "name": "@feizheng/generator-generator",
+  "name": "@jswork/generator-generator",
   "version": "1.0.0",
   "description": "My yeoman generator.",
   "homepage": "https://github.com/afeiship/generator-generator",
@@ -13,9 +13,9 @@
   ],
   "main": "generators/index.js",
   "keywords": [
+    "generator",
     "yeoman",
-    "yo",
-    "yeoman-generator"
+    "yo"
   ],
   "devDependencies": {
     "yeoman-test": "^2.6.0",
