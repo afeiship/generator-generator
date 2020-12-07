@@ -23,7 +23,8 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
-    "@feizheng/yeoman-generator-helper": "^1.0.10",
+    "@jswork/next-registry-choices": "^1.0.0",
+    "@jswork/yeoman-generator-helper": "^1.0.3",
     "chalk": "^4.1.0",
     "replace-in-file": "^6.1.0",
     "yeoman-generator": "^4.11.0",
