@@ -41,7 +41,7 @@ module.exports = class extends Generator {
       {
         type: "input",
         name: "boilerplate_name",
-        message: "Your boilerplate_name?",
+        message: "Your boilerplate_name (eg: `boilerplate-github` )?",
       },
       {
         type: "input",
@@ -77,7 +77,7 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.npmInstall();
+    // this.npmInstall();
   }
 
   end() {
