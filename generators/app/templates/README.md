@@ -1,2 +1,2 @@
-# boilerplate-generator
-> boilerplate-generator-description
+# <%= project_name %>
+> <%= description %>
