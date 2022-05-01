@@ -1,0 +1,32 @@
+{
+  "name": "@<%= scope %>/<%= project_name %>",
+  "version": "1.0.0",
+  "description": "<%= description %>",
+  "keywords": [
+    "yeoman",
+    "yo",
+    "yeoman-generator"
+  ],
+  "engines": {
+    "npm": ">= 4.0.0"
+  },
+  "devDependencies": {
+    "jest": "^28.0.3",
+    "prettier": "^2.6.2",
+    "yeoman-assert": "^3.1.1",
+    "yeoman-environment": "^3.9.1",
+    "yeoman-test": "^6.3.0"
+  },
+  "dependencies": {
+    "@jswork/generator-prompts": "^1.1.6",
+    "@jswork/yeoman-generator-helper": "^1.0.6",
+    "chalk": "^5.0.1",
+    "yeoman-generator": "^5.6.1",
+    "yosay": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afeiship/<%= project_name %>.git"
+  },
+  "license": "MIT"
+}

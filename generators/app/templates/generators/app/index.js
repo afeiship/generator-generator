@@ -9,7 +9,13 @@ const prompts = genp(["scope", "registry", "project_name", "description"]);
 module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
-    this.log(yosay(`Welcome to the stunning "generator-generator" generator!`));
+    this.log(
+      yosay(
+        `Welcome to the stunning $
+          "generator-<%= project_name %>"
+         generator!`
+      )
+    );
 
     this.props = await this.prompt(prompts);
   }
