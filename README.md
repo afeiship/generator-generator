@@ -12,4 +12,5 @@ npm i && npm link
 ## usage
 ```shell
 yo @jswork/generator
+yo @jswork/generator:tpl
 ```

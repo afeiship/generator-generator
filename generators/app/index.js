@@ -10,7 +10,6 @@ module.exports = class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(`Welcome to the stunning "generator-generator" generator!`));
-
     this.props = await this.prompt(prompts);
   }
 
