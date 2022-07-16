@@ -10,5 +10,5 @@ npm link
 
 ## usage
 ```shell
-yo @jswork/pypi
+yo @jswork/<%- project_name.split('-')[1] %>
 ```
